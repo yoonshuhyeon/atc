@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATC - 술자리 내비게이터</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>🍻 ATC</h1>
+            <p>오프라인 술자리 내비게이터</p>
+        </header>
+
+        <!-- 입장 섹션 -->
+        <section id="join-section">
+            <div class="card">
+                <input type="text" id="room-code" placeholder="룸 코드 (예: ABCD)" maxlength="6">
+                <input type="text" id="nickname" placeholder="닉네임 (예: 강남차은우)">
+                <div class="gender-selector">
+                    <label><input type="radio" name="gender" value="M" checked> 남성</label>
+                    <label><input type="radio" name="gender" value="F"> 여성</label>
+                </div>
+                <button id="join-btn" class="primary-btn">룸 입장하기</button>
+            </div>
+        </section>
+
+        <!-- 메인 게임 섹션 (입장 후 노출) -->
+        <section id="game-section" class="hidden">
+            <div class="status-bar">
+                <div class="status-item"><span>룸코드</span><strong id="display-room-code">-</strong></div>
+                <div class="status-item"><span>닉네임</span><strong id="display-nickname">-</strong></div>
+                <div class="status-item"><span>나의 팀</span><strong id="display-team">-</strong></div>
+            </div>
+
+            <div class="pick-area">
+                <h2>✨ 사랑의 짝대기</h2>
+                <p class="subtitle">마음에 드는 분을 찍어주세요. 투표를 기반으로 자리가 정해집니다.</p>
+                <div id="participant-list" class="chip-container">
+                    <!-- 참여자 목록이 여기에 동적으로 추가됨 -->
+                </div>
+                <div id="wait-msg" class="hidden">상대 팀원이 아직 없습니다. 잠시만 기다려주세요.</div>
+            </div>
+
+            <div class="info-footer">
+                <p>💡 안내: 모든 참가자가 투표를 마쳐야 결과가 공개됩니다.</p>
+                <button id="disconnect-btn" class="secondary-btn">연결 해제</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- 결과 모달 -->
+    <div id="result-modal" class="modal hidden">
+        <div class="modal-content">
+            <div id="result-text"></div>
+            <button id="close-modal-btn" class="primary-btn">확인</button>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
